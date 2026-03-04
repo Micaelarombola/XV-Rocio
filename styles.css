@@ -89,7 +89,8 @@ body{
 
 /* HERO */
 .hero{
-  min-height:100vh;
+  min-height:100svh;
+  min-height:100dvh; /* fallback moderno */
   display:grid;
   place-items:center;
   padding: 80px 18px 55px;
@@ -900,9 +901,21 @@ body{
   background: rgba(255,255,255,.9);
   border: 1px solid rgba(232,154,184,.22);
 }
-.dressPremium{ transform: translateY(10px); opacity: 0; transition: .7s ease; }
-.dressPremium.dressIn{ transform: translateY(0); opacity: 1; }
+.dressPremium{
+  opacity: 1;
+  transform: none;
+  transition: .7s ease;
+}
 
+body.js .dressPremium{
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+body.js .dressPremium.dressIn{
+  opacity: 1;
+  transform: translateY(0);
+}
 /* ===== Sorpresa Fotos ===== */
 .photosTitle{
   position: relative;
@@ -1415,29 +1428,106 @@ body{
   padding: 18px;
 }
 
-/* ===== GALERÍA 2 FOTOS GRANDES SIN CORTE ===== */
+/* =========================
+   GALERIA FOTOS
+========================= */
 
 .galleryGridClean{
   margin-top:30px;
   display:grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 por fila */
-  gap:26px;
+  grid-template-columns: repeat(3, 1fr);
+  gap:22px;
 }
 
-/* tarjeta */
+/* celular */
+@media (max-width:768px){
+  .galleryGridClean{
+    grid-template-columns: repeat(2, 1fr);
+    gap:14px;
+  }
+}
+
 .gTile{
-  border-radius:26px;
+  border-radius:24px;
   overflow:hidden;
-  background:white;
-  box-shadow:0 18px 55px rgba(0,0,0,.15);
-  padding:10px;
+  border:2px solid rgba(0,0,0,.6);
+  background:#fff;
+  box-shadow:0 18px 55px rgba(0,0,0,.12);
+  padding:0;
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease;
 }
 
-/* imagen */
+.gTile:hover{
+  transform:translateY(-4px);
+  box-shadow:0 25px 70px rgba(0,0,0,.16);
+}
+
 .gTile img{
   width:100%;
-  height:auto;      /* mantiene proporción real */
-  object-fit:contain;
+  height:100%;
   display:block;
-  border-radius:18px;
+  object-fit:cover;
+  aspect-ratio:4/5;
+}
+
+/* ===== FIX DRESS CODE (forzar visible) ===== */
+#dresscode .dressPremium{
+  opacity: 1 !important;
+  transform: none !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+#dresscode .dressPremium *{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+/* ===== GALERÍA FINAL LIMPIA ===== */
+
+.galleryGridClean{
+  display: block !important;
+  column-count: 2;
+  column-gap: 10px;   /* separación pequeña entre columnas */
+  margin-top: 30px;
+}
+
+.gTile{
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 10px;  /* separación vertical chica */
+
+  padding: 0;
+  border: none;
+  background: transparent;  /* quita el blanco */
+  box-shadow: none;
+
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.gTile img{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 18px;
+}
+
+/* celular */
+@media (max-width:768px){
+
+  .galleryGridClean{
+    column-gap: 8px;
+  }
+
+  .gTile{
+    margin-bottom: 8px;
+    border-radius: 16px;
+  }
+
+  .gTile img{
+    border-radius: 16px;
+  }
+
 }
