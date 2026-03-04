@@ -237,11 +237,14 @@ draw();
 /* =========================
    PETALS / HEARTS (DOM FX)
    ========================= */
-if (CONFIG.petalsEnabled) {
+const isMobile = window.innerWidth < 768;
+   if (CONFIG.petalsEnabled) {
   const petalsLayer = document.querySelector(".petals");
-  const interval = Math.max(120, Math.floor((CONFIG.petalsPerMinute / 60) * 1000));
-
+const interval = isMobile
+  ? Math.max(800, Math.floor((CONFIG.petalsPerMinute / 120) * 1000))
+  : Math.max(120, Math.floor((CONFIG.petalsPerMinute / 60) * 1000));
   setInterval(() => {
+    if (document.querySelectorAll(".petal").length > (isMobile ? 8 : 25)) return;
     if (!petalsLayer) return;
 
     const el = document.createElement("div");
@@ -255,8 +258,7 @@ if (CONFIG.petalsEnabled) {
     el.style.animationDuration = duration + "s";
     el.style.opacity = (0.25 + Math.random() * 0.45).toFixed(2);
     el.style.transform = `translateY(-20px) rotate(${Math.random() * 180}deg)`;
-    el.style.filter = `blur(${(Math.random() * 0.6).toFixed(2)}px)`;
-    el.style.fontSize = size + "px";
+el.style.filter = isMobile ? "none" : `blur(${(Math.random() * 0.6).toFixed(2)}px)`;    el.style.fontSize = size + "px";
 
     petalsLayer.appendChild(el);
     setTimeout(() => el.remove(), (duration * 1000) + 500);
