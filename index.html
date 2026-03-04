@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mis 15 - Rocío</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- FX LAYERS -->
+  <canvas id="sparkleCanvas" aria-hidden="true"></canvas>
+  <div class="petals" aria-hidden="true"></div>
+
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="loaderCard">
+      <div class="loaderRing"></div>
+      <p>Cargando invitación…</p>
+    </div>
+  </div>
+
+  <!-- HERO -->
+<header class="hero" id="top">
+  <div class="heroOverlay"></div>
+
+  <div class="heroCard">
+
+   <div class="heroTitleBlock">
+  <p class="kicker reveal">MIS XV</p>
+  <h1 class="name reveal delay-1">Rocío</h1>
+</div>
+
+<p class="heroPhrase reveal delay-2">
+Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan especial</p>
+
+    <!-- FOTO PRINCIPAL -->
+    <div class="mainPhotoWrap reveal delay-3">
+      <img class="mainPhoto" src="assets/Principal.jpeg" alt="Rocío - foto principal" />
+    </div>
+
+    <!-- BOTONES -->
+    <div class="heroActions reveal delay-4">
+      <a class="btn btnPrimary" href="#details">Ver detalles</a>
+      <button class="btn btnGhost" id="musicBtn" aria-pressed="false">
+        Música: OFF
+      </button>
+    </div>
+
+    <!-- HINT -->
+    <p class="scrollHint reveal delay-4">
+      Deslizá para ver toda la invitación ✨
+    </p>
+
+  </div>
+</header>
+
+  <!-- AUDIO (opcional) -->
+  <audio id="bgMusic" loop>
+    <source src="assets/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <main class="content">
+
+    <!-- DATOS DEL EVENTO -->
+  
+<section class="section revealOnScroll" id="details">
+  <div class="container">
+    <h2 class="h2 center detailsTitle">
+      Detalles del evento
+      <span class="detailsHalo" aria-hidden="true"></span>
+    </h2>
+
+    <p class="p center muted detailsSub">
+      Guardá la fecha… se viene una noche inolvidable 💗✨
+    </p>
+
+    <div class="grid3">
+      <article class="card glow">
+        <div class="icon">🗓</div>
+        <h3 class="h3">Fecha</h3>
+        <p class="p" id="eventDateText">Sábado 27 de Junio 2026</p>
+      </article>
+
+      <article class="card glow">
+        <div class="icon">⏰</div>
+        <h3 class="h3">Horario</h3>
+        <p class="p">
+          <strong id="eventTimeText">21:00 hs</strong>
+          <span class="muted"> a </span>
+          <strong id="eventEndText">05:00 am</strong>
+        </p>
+        <p class="small muted">¡Toda la noche! ✨</p>
+      </article>
+
+      <article class="card glow">
+        <div class="icon">📍</div>
+        <h3 class="h3">Salón</h3>
+        <p class="p">
+          <span id="venueName">Don Quijote</span><br/>
+          <span class="muted" id="venueAddress">San Lorenzo 2482, San Martín, Provincia de Buenos Aires</span>
+        </p>
+      </article>
+    </div>
+
+    <div class="center mt">
+      <a class="btn btnPrimary" id="mapsBtn" target="_blank" rel="noopener">Ver en Google Maps</a>
+    </div>
+  </div>
+</section>
+
+    
+    <!-- OTRAS FOTOS -->
+    <section class="section sectionSoft revealOnScroll" id="gallery">
+      <div class="container">
+<h2 class="h2 center photosTitle">
+  <span class="sparkleWord">Fotos</span>
+  <span class="shine" aria-hidden="true"></span>
+</h2>
+
+<p class="p center muted photosSub" id="photosSub">
+  <!-- el JS escribe acá -->
+
+        <div class="carousel">
+          <button class="carouselBtn" id="prevBtn" aria-label="Anterior">‹</button>
+
+          <div class="carouselTrackWrap">
+            <div class="carouselTrack" id="carouselTrack">
+              <figure class="slide"><img src="assets/1.jpeg" alt="Rocío foto 1"></figure>
+              <figure class="slide"><img src="assets/2.jpeg" alt="Rocío foto 2"></figure>
+              <figure class="slide"><img src="assets/3.jpeg" alt="Rocío foto 3"></figure>
+              <figure class="slide"><img src="assets/4.jpeg" alt="Rocío foto 4"></figure>
+              <figure class="slide"><img src="assets/5.jpeg" alt="Rocío foto 5"></figure>
+              <figure class="slide"><img src="assets/6.jpeg" alt="Rocío foto 5"></figure>
+              <figure class="slide"><img src="assets/7.jpeg" alt="Rocío foto 5"></figure>
+              <figure class="slide"><img src="assets/8.jpeg" alt="Rocío foto 5"></figure>
+
+            </div>
+          </div>
+
+          <button class="carouselBtn" id="nextBtn" aria-label="Siguiente">›</button>
+        </div>
+
+        <div class="dots" id="dots" aria-label="Indicadores del carrusel"></div>
+      </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="section revealOnScroll" id="dresscode">
+      <div class="container narrow center">
+        <h2 class="h2">Dress Code</h2>
+
+        <div class="dressPremium">
+          <div class="dressSparkle" aria-hidden="true"></div>
+
+          <div class="dressIcons" aria-hidden="true">
+            <div class="dressIconBox">👗</div>
+            <div class="dressIconBox">🤵</div>
+          </div>
+
+          <div class="dressTag">Elegante</div>
+
+          <p class="dressCopy">
+            Vení listo para brillar ✨<br />
+            Una noche especial merece un look inolvidable.
+          </p>
+
+
+        </div>
+      </div>
+    </section>
+    <!-- REGALO (ALIAS COPIABLE) -->
+    <section class="section sectionSoft revealOnScroll" id="gift">
+      <div class="container narrow center">
+        <h2 class="h2">Regalo</h2>
+
+        <p class="p muted" style="max-width:640px;margin:10px auto 0;line-height:1.9;">
+          Tu presencia es mi mayor regalo 💗<br />
+          Pero si querés ayudarme a cumplir un sueño, podés hacerlo con un detalle ✨
+        </p>
+
+        <div class="giftCard">
+          <div class="giftTop">
+            <div class="giftIcon">🎁</div>
+            <div class="giftTexts">
+              <div class="giftTitle">Alias para regalo</div>
+              <div class="giftSub">Tocá el alias para copiarlo</div>
+            </div>
+          </div>
+
+          <button class="giftAliasBtn" id="copyAliasBtn" type="button" aria-label="Copiar alias">
+            <span class="giftAliasLabel">ALIAS</span>
+            <span class="giftAliasValue" id="aliasText">roalberti</span>
+            <span class="giftCopyPill" aria-hidden="true">Copiar</span>
+          </button>
+
+          <p class="giftNote muted">
+            Si podés, agregá tu nombre en la transferencia para que pueda agradecerte 💗
+          </p>
+
+          <p class="giftToast" id="copyFeedback" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+    <!-- SPOTIFY -->
+    <section class="section revealOnScroll" id="spotify">
+      <div class="container narrow center">
+        <h2 class="h2">La música de mi noche 🎶</h2>
+
+        <p class="p muted" style="max-width:600px;margin:10px auto 0;">
+          Quiero que esta fiesta también tenga tu canción 💗
+          Sumá tu tema favorito y hagamos juntos la playlist de mis 15 ✨
+        </p>
+
+        <div class="spotifyBox" style="margin-top:20px;">
+          <a class="btn btnPrimary" href="https://open.spotify.com/playlist/7nHoAj8zTg82NYjrWMmn5o" target="_blank"
+            rel="noopener">
+            💗 Agregar mi canción
+          </a>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="section sectionSoft revealOnScroll" id="countdown">
+      <div class="container">
+        <h2 class="h2 center">Cuenta regresiva</h2>
+        <p class="p center muted">Falta muy poquito… ✨</p>
+
+        <div class="countdownWrap" role="timer" aria-live="polite">
+          <div class="timeBox">
+            <div class="timeVal" id="days">00</div>
+            <div class="timeLbl">Días</div>
+          </div>
+          <div class="timeBox">
+            <div class="timeVal" id="hours">00</div>
+            <div class="timeLbl">Horas</div>
+          </div>
+          <div class="timeBox">
+            <div class="timeVal" id="minutes">00</div>
+            <div class="timeLbl">Min</div>
+          </div>
+          <div class="timeBox">
+            <div class="timeVal" id="seconds">00</div>
+            <div class="timeLbl">Seg</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section revealOnScroll" id="rsvp">
+      <div class="container narrow center">
+        <h2 class="h2">Confirmar asistencia</h2>
+
+        <p class="p muted rsvpPhrase">
+          Tu presencia hará esta noche aún más especial. ¿Me acompañás?💗
+        </p>
+
+        <div class="rsvpBox">
+          <button class="btn btnPrimary" id="openRsvpBtn" type="button">Confirmar ahora</button>
+        </div>
+
+        <p class="p muted rsvpPhrase">
+          Este momento lo soñé muchas veces… y quiero compartirlo con vos. 💗
+        </p>
+      </div>
+    </section>
+
+    <!-- MODAL RSVP -->
+    <div class="modal" id="rsvpModal" aria-hidden="true">
+      <div class="modalBackdrop" id="rsvpBackdrop"></div>
+
+      <div class="modalCard" role="dialog" aria-modal="true" aria-labelledby="rsvpTitle">
+        <button class="modalClose" id="closeRsvpBtn" aria-label="Cerrar">✕</button>
+
+        <div class="modalHeader">
+          <div class="modalBadge">💗</div>
+          <div>
+            <h3 class="modalTitle" id="rsvpTitle">Confirmación de asistencia</h3>
+            <p class="modalText">Completá tus datos y enviá la confirmación por WhatsApp ✨</p>
+          </div>
+        </div>
+
+        <form id="rsvpRealForm" class="form">
+          <label class="field">
+            <span>Nombre y apellido</span>
+            <input type="text" id="rsvpName" placeholder="Ej: Florencia Pérez" required maxlength="60" />
+          </label>
+
+          <label class="field">
+            <span>¿Cuántas personas asisten?</span>
+            <select id="rsvpQty" required>
+              <option value="" disabled selected>Seleccioná</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Tipo de comida</span>
+            <select id="rsvpFood" required>
+              <option value="" disabled selected>Seleccioná</option>
+              <option value="Sin preferencia">Sin preferencia</option>
+              <option value="Vegetariana">Vegetariana</option>
+              <option value="Vegana">Vegana</option>
+              <option value="Celíaca (sin TACC)">Celíaca (sin TACC)</option>
+              <option value="Sin lactosa">Sin lactosa</option>
+              <option value="Otra">Otra</option>
+            </select>
+          </label>
+
+          <label class="field" id="foodOtherWrap" style="display:none;">
+            <span>¿Cuál?</span>
+            <input type="text" id="rsvpFoodOther" placeholder="Escribí tu preferencia" maxlength="60" />
+          </label>
+
+          <label class="field">
+            <span>Mensaje (opcional)</span>
+            <textarea id="rsvpNote" rows="3" placeholder="Ej: Llego un poquito más tarde / etc."></textarea>
+          </label>
+
+          <button class="btn btnPrimary formBtn" type="submit">Enviar confirmación</button>
+          <p class="small muted" id="rsvpFeedback" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- CIERRE LINDO -->
+    <section class="section sectionSoft revealOnScroll" id="closing">
+      <div class="container narrow center">
+        <h2 class="h2">Te espero</h2>
+        <p class="closingText">
+          Con tu presencia, esta noche será perfecta.<br />
+          Gracias por ser parte de mi historia 🤍💗
+        </p>
+        <a class="btn btnGhost" href="#top">Volver arriba</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container center">
+        <p class="footerLine">Hecho con amor 🤍💗</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
