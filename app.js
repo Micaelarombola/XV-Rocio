@@ -556,3 +556,74 @@ document.querySelectorAll("#details .card").forEach((card) => {
 
   card.addEventListener("touchend", reset);
 });
+
+/* =========================
+   MÚSICA: ENVIAR TEMA POR WHATSAPP
+   ========================= */
+const songName = document.getElementById("songName");
+const songArtist = document.getElementById("songArtist");
+const songNote = document.getElementById("songNote");
+const sendSongBtn = document.getElementById("sendSongBtn");
+const songFeedback = document.getElementById("songFeedback");
+
+sendSongBtn?.addEventListener("click", () => {
+  const name = (songName?.value || "").trim();
+  const artist = (songArtist?.value || "").trim();
+  const note = (songNote?.value || "").trim();
+
+  if (!name) {
+    if (songFeedback) songFeedback.textContent = "Escribí el nombre del tema 🙏";
+    songName?.focus();
+    return;
+  }
+
+  const msg =
+    `🎶 TEMA PARA LOS 15 DE ROCÍO 🎶\n\n` +
+    `Tema: ${name}\n` +
+    (artist ? `Artista: ${artist}\n` : ``) +
+    (note ? `Mensaje: ${note}\n` : ``) +
+    `\n¡Gracias! 💗✨`;
+
+  const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+
+  if (songFeedback) songFeedback.textContent = "Abriendo WhatsApp…";
+  window.open(url, "_blank", "noopener");
+
+  setTimeout(() => {
+    if (songFeedback) songFeedback.textContent = "";
+    songName.value = "";
+    if (songArtist) songArtist.value = "";
+    if (songNote) songNote.value = "";
+  }, 900);
+});
+/* =========================
+   GALERÍA: Lightbox
+   ========================= */
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxClose = document.getElementById("lightboxClose");
+const lightboxBackdrop = document.getElementById("lightboxBackdrop");
+
+document.querySelectorAll(".gItem img").forEach((img) => {
+  img.parentElement.addEventListener("click", () => {
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = img.src;
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+function closeLightbox(){
+  if (!lightbox) return;
+  lightbox.classList.remove("open");
+  lightbox.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  if (lightboxImg) lightboxImg.src = "";
+}
+
+lightboxClose?.addEventListener("click", closeLightbox);
+lightboxBackdrop?.addEventListener("click", closeLightbox);
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && lightbox?.classList.contains("open")) closeLightbox();
+});

@@ -110,11 +110,26 @@ Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan espe
           <span class="muted" id="venueAddress">San Lorenzo 2482, San Martín, Provincia de Buenos Aires</span>
         </p>
       </article>
+
+      <article class="card glow cardAction">
+  <div class="icon">📅</div>
+  <h3 class="h3">Agendar</h3>
+  <p class="p muted">Sumalo a tu calendario en 1 toque ✨</p>
+
+  <a class="btn btnPrimary btnInsideCard" target="_blank" rel="noopener"
+     href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV%20de%20Roc%C3%ADo&dates=20260628T000000Z/20260628T080000Z&details=%C2%A1Te%20espero%20en%20mis%20XV!%20%F0%9F%92%97%20%28Invitaci%C3%B3n%20WebMic%29&location=Don%20Quijote%20-%20San%20Lorenzo%202482%2C%20San%20Mart%C3%ADn%2C%20Provincia%20de%20Buenos%20Aires">
+     Agendar en Google
+  </a>
+
+  <a class="btn btnGhost btnInsideCard" href="evento-rocio.ics" download>
+     Agendar (iPhone/Outlook)
+  </a>
+</article>
     </div>
 
-    <div class="center mt">
-      <a class="btn btnPrimary" id="mapsBtn" target="_blank" rel="noopener">Ver en Google Maps</a>
-    </div>
+  
+  </a>
+</div>
   </div>
 </section>
 
@@ -127,32 +142,17 @@ Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan espe
   <span class="shine" aria-hidden="true"></span>
 </h2>
 
-<p class="p center muted photosSub" id="photosSub">
-  <!-- el JS escribe acá -->
+<div class="galleryGridClean" id="galleryGridClean">
+  <button class="gTile" type="button"><img src="assets/8.jpeg" alt="Rocío foto 1"></button>
+  <button class="gTile" type="button"><img src="assets/6.jpeg" alt="Rocío foto 2"></button>
+  <button class="gTile" type="button"><img src="assets/7.jpeg" alt="Rocío foto 3"></button>
+  <button class="gTile" type="button"><img src="assets/4.jpeg" alt="Rocío foto 4"></button>
+  <button class="gTile" type="button"><img src="assets/5.jpeg" alt="Rocío foto 5"></button>
+  <button class="gTile" type="button"><img src="assets/2.jpeg" alt="Rocío foto 6"></button>
+</div>
 
-        <div class="carousel">
-          <button class="carouselBtn" id="prevBtn" aria-label="Anterior">‹</button>
 
-          <div class="carouselTrackWrap">
-            <div class="carouselTrack" id="carouselTrack">
-              <figure class="slide"><img src="assets/1.jpeg" alt="Rocío foto 1"></figure>
-              <figure class="slide"><img src="assets/2.jpeg" alt="Rocío foto 2"></figure>
-              <figure class="slide"><img src="assets/3.jpeg" alt="Rocío foto 3"></figure>
-              <figure class="slide"><img src="assets/4.jpeg" alt="Rocío foto 4"></figure>
-              <figure class="slide"><img src="assets/5.jpeg" alt="Rocío foto 5"></figure>
-              <figure class="slide"><img src="assets/6.jpeg" alt="Rocío foto 5"></figure>
-              <figure class="slide"><img src="assets/7.jpeg" alt="Rocío foto 5"></figure>
-              <figure class="slide"><img src="assets/8.jpeg" alt="Rocío foto 5"></figure>
 
-            </div>
-          </div>
-
-          <button class="carouselBtn" id="nextBtn" aria-label="Siguiente">›</button>
-        </div>
-
-        <div class="dots" id="dots" aria-label="Indicadores del carrusel"></div>
-      </div>
-    </section>
 
     <!-- DRESS CODE -->
     <section class="section revealOnScroll" id="dresscode">
@@ -212,25 +212,40 @@ Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan espe
       </div>
     </section>
     <!-- SPOTIFY -->
-    <section class="section revealOnScroll" id="spotify">
-      <div class="container narrow center">
-        <h2 class="h2">La música de mi noche 🎶</h2>
+    <!-- MÚSICA (WhatsApp) -->
+<section class="section revealOnScroll" id="musicPick">
+  <div class="container narrow center">
+    <h2 class="h2">Elegí un tema para mi noche 🎶</h2>
 
-        <p class="p muted" style="max-width:600px;margin:10px auto 0;">
-          Quiero que esta fiesta también tenga tu canción 💗
-          Sumá tu tema favorito y hagamos juntos la playlist de mis 15 ✨
-        </p>
+    <p class="p muted" style="max-width:600px;margin:10px auto 0;">
+      Ayudame a armar la música de mis 15 💗<br/>
+      Elegí una canción que no puede faltar y mandámela por WhatsApp ✨
+    </p>
 
-        <div class="spotifyBox" style="margin-top:20px;">
-          <a class="btn btnPrimary" href="https://open.spotify.com/playlist/7nHoAj8zTg82NYjrWMmn5o" target="_blank"
-            rel="noopener">
-            💗 Agregar mi canción
-          </a>
+    <div class="musicPickCard">
+      <label class="field">
+        <span>¿Qué tema querés sumar?</span>
+        <input type="text" id="songName" placeholder="Ej: Tini - Miénteme / Coldplay - Yellow" maxlength="80" />
+      </label>
 
+      <label class="field">
+        <span>Artista (opcional)</span>
+        <input type="text" id="songArtist" placeholder="Ej: Tini / Coldplay" maxlength="60" />
+      </label>
 
-        </div>
-      </div>
-    </section>
+      <label class="field">
+        <span>Mensaje (opcional)</span>
+        <textarea id="songNote" rows="3" placeholder="Ej: ¡Este tema es para cantar a los gritos! 💗"></textarea>
+      </label>
+
+      <button class="btn btnPrimary formBtn" id="sendSongBtn" type="button">
+        📲 Enviar por WhatsApp
+      </button>
+
+      <p class="small muted" id="songFeedback" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
 
     <!-- COUNTDOWN -->
     <section class="section sectionSoft revealOnScroll" id="countdown">
