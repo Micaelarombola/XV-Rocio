@@ -182,11 +182,15 @@ if (slides.length) {
 /* =========================
    SPARKLES BACKGROUND (CANVAS)
    ========================= */
-const canvas = $("sparkleCanvas");
-const ctx = canvas?.getContext("2d");
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+const canvas = isMobile ? null : $("#sparkleCanvas");
+const ctx = canvas ? canvas.getContext("2d") : null;
 
 let w = 0, h = 0;
 
+let w = 0, h = 0;
+if (!canvas) return;
 function resize() {
   if (!canvas) return;
   w = canvas.width = window.innerWidth * devicePixelRatio;
@@ -238,7 +242,9 @@ draw();
    PETALS / HEARTS (DOM FX)
    ========================= */
 const isMobile = window.innerWidth < 768;
-   if (CONFIG.petalsEnabled) {
+
+const ppm = isMobile ? 10 : CONFIG.petalsPerMinute; // menos en celu
+const interval = Math.max(200, Math.floor((ppm / 60) * 1000));  if (CONFIG.petalsEnabled && window.innerWidth > 768) {
   const petalsLayer = document.querySelector(".petals");
 const interval = isMobile
   ? Math.max(800, Math.floor((CONFIG.petalsPerMinute / 120) * 1000))
