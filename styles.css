@@ -1304,3 +1304,80 @@ body{
     radial-gradient(circle at 50% 80%, rgba(252,228,236,.9), transparent 55%);
   z-index:-1;
 }
+
+/* ===== Footer WebMic ===== */
+
+.footerWebmic{
+  padding: 40px 18px 50px;
+  background: #fff;
+  border-top: 1px solid rgba(232,154,184,.15);
+  text-align: center;
+}
+
+.footerContent{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.madeWith{
+  color: #777;
+  font-size: .95rem;
+  margin-bottom: 14px;
+}
+
+.webmicBrand{
+  margin-bottom: 10px;
+}
+
+.wmName{
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #D870A3;
+  letter-spacing: .03em;
+  position: relative;
+}
+
+/* brillo sutil marca */
+.wmName::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:60%;
+  height:100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.8),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: brandShine 8s ease-in-out infinite;
+}
+
+@keyframes brandShine{
+  0%{ left:-120%; }
+  30%{ left:120%; }
+  100%{ left:120%; }
+}
+
+.webmicContact{
+  font-size: .9rem;
+}
+
+.webmicContact a{
+  text-decoration: none;
+  color: #D870A3;
+  font-weight: 600;
+  transition: opacity .2s ease;
+}
+
+.webmicContact a:hover{
+  opacity: .7;
+}
+
+.dotSeparator{
+  margin: 0 8px;
+  color: rgba(216,112,163,.6);
+}
