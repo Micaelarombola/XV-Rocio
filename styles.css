@@ -1531,3 +1531,23 @@ body.js .dressPremium.dressIn{
   }
 
 }
+/* ===== GALERÍA MÁS GRANDE EN CELULAR ===== */
+
+@media (max-width:768px){
+
+  /* la sección usa más ancho de pantalla */
+  #gallery .container{
+    width: 96vw;
+  }
+
+  /* menos espacio entre columnas */
+  .galleryGridClean{
+    column-gap: 6px;
+  }
+
+  /* menos espacio vertical */
+  .gTile{
+    margin-bottom: 6px;
+  }
+
+}
