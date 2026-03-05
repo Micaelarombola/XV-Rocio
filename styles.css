@@ -1531,30 +1531,60 @@ body.js .dressPremium.dressIn{
   }
 
 }
-/* ===== GALERÍA FULL ANCHO EN CELULAR ===== */
-
+/* =========================
+   GALERÍA: FULL ANCHO + 2 COL GRANDES (CEL)
+========================= */
 @media (max-width:768px){
 
-  /* quitamos el padding lateral de la sección */
+  /* la sección ocupa casi toda la pantalla */
   #gallery.section{
-    padding-left: 6px;
-    padding-right: 6px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
   }
 
-  /* el container usa todo el ancho */
+  /* el container NO limita */
   #gallery .container{
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
   }
 
-  /* columnas pegadas */
-  .galleryGridClean{
-    column-gap: 6px;
+  /* 2 columnas grandes */
+  #gallery .galleryGridClean{
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important; /* separación mínima */
   }
 
-  .gTile{
-    margin-bottom: 6px;
+  /* tarjeta sin borde blanco */
+  #gallery .gTile{
+    border: 0 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,.10) !important;
+    background: transparent !important;
   }
 
+  /* la imagen NO se corta */
+  #gallery .gTile img{
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: contain !important; /* NO recorta */
+    aspect-ratio: auto !important;  /* quita tu 4/5 */
+  }
+}
+
+/* Loader: transición real al ocultar */
+.loader{
+  transition: opacity .35s ease;
+}
+.loader.hide{
+  opacity: 0;
+  pointer-events: none;
+}
+/* Evita saltos raros de scroll por re-anclaje */
+html, body{
+  overflow-anchor: none;
 }

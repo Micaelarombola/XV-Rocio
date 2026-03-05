@@ -1,6 +1,17 @@
 /* =========================
    CONFIG RÁPIDA
 ========================= */
+
+const loader = document.getElementById("loader");
+
+function hideLoader(){
+  if (!loader) return;
+  loader.classList.add("hide");
+  setTimeout(() => loader.remove(), 400);
+}
+
+window.addEventListener("load", hideLoader);
+setTimeout(hideLoader, 3500);
 const CONFIG = {
   eventISO: "2026-06-27T21:00:00-03:00",
   dateText: "Sábado 27 de Junio 2026",
@@ -27,13 +38,8 @@ const $ = (id) => document.getElementById(id);
    LOADER (no se traba)
 ========================= */
 const loader = $("loader");
+imeout(() => loader.remove(), 350);
 
-function hideLoader() {
-  if (!loader) return;
-  loader.style.opacity = "0";
-  loader.style.pointerEvents = "none";
-  setTimeout(() => loader.remove(), 350);
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(hideLoader, 250);
