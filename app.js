@@ -1,17 +1,11 @@
 /* =========================
-   CONFIG RÁPIDA
+   HELPERS
 ========================= */
+const $ = (id) => document.getElementById(id);
 
-const loader = document.getElementById("loader");
-
-function hideLoader(){
-  if (!loader) return;
-  loader.classList.add("hide");
-  setTimeout(() => loader.remove(), 400);
-}
-
-window.addEventListener("load", hideLoader);
-setTimeout(hideLoader, 3500);
+/* =========================
+   CONFIG
+========================= */
 const CONFIG = {
   eventISO: "2026-06-27T21:00:00-03:00",
   dateText: "Sábado 27 de Junio 2026",
@@ -24,27 +18,28 @@ const CONFIG = {
   whatsappNumber: "5491167007577",
   alias: "roalberti",
 
-  spotifyUrl: "https://open.spotify.com/",
-  carouselAutoplay: true,
-  carouselMs: 4200,
-
   petalsEnabled: true,
   petalsPerMinute: 35
 };
 
-const $ = (id) => document.getElementById(id);
-
 /* =========================
-   LOADER (no se traba)
+   LOADER (limpio y sin trabarse)
 ========================= */
-const loader = $("loader");
-imeout(() => loader.remove(), 350);
+function hideLoader() {
+  const loader = $("loader");
+  if (!loader) return;
+  loader.classList.add("hide");
+  setTimeout(() => loader.remove(), 420);
+}
 
-
+// Apenas el DOM está listo (rápido)
 document.addEventListener("DOMContentLoaded", () => {
+  // si hay imágenes pesadas, no esperes forever:
   setTimeout(hideLoader, 250);
-  setTimeout(hideLoader, 3500); // fallback
+  setTimeout(hideLoader, 3500); // fallback sí o sí
 });
+
+// Si el load llega, también lo cerramos
 window.addEventListener("load", hideLoader);
 
 /* =========================
@@ -124,17 +119,16 @@ if ("IntersectionObserver" in window) {
 }
 
 /* =========================
-   DRESS CODE: mostrar sí o sí
+   DRESS CODE: visible siempre
 ========================= */
 const dress = document.querySelector(".dressPremium");
 if (dress) {
-  // por si alguna regla lo deja en 0
   dress.style.opacity = "1";
   dress.style.transform = "none";
 }
 
 /* =========================
-   SPARKLES (solo PC, así no “salta” en celu)
+   CANVAS SPARKLES (solo PC)
 ========================= */
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -142,7 +136,7 @@ if (!isMobile) {
   const canvas = $("sparkleCanvas");
   const ctx = canvas ? canvas.getContext("2d") : null;
 
-  let w = 0, h = 0, rafId = null;
+  let w = 0, h = 0;
 
   const resize = () => {
     if (!canvas) return;
@@ -154,11 +148,7 @@ if (!isMobile) {
   };
 
   resize();
-  window.addEventListener("resize", () => {
-    // evita reventar el scroll
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(resize);
-  }, { passive: true });
+  window.addEventListener("resize", () => requestAnimationFrame(resize), { passive: true });
 
   const dpr = window.devicePixelRatio || 1;
   const sparkles = Array.from({ length: 110 }, () => ({
@@ -175,7 +165,10 @@ if (!isMobile) {
 
     ctx.clearRect(0, 0, w, h);
 
-    const g = ctx.createRadialGradient(w * 0.5, h * 0.35, 0, w * 0.5, h * 0.35, Math.max(w, h) * 0.8);
+    const g = ctx.createRadialGradient(
+      w * 0.5, h * 0.35, 0,
+      w * 0.5, h * 0.35, Math.max(w, h) * 0.8
+    );
     g.addColorStop(0, "rgba(232,154,184,0.14)");
     g.addColorStop(1, "rgba(255,255,255,0)");
     ctx.fillStyle = g;
@@ -203,15 +196,13 @@ if (!isMobile) {
 }
 
 /* =========================
-   PETALS (suave + no mata celu)
+   PETALS (suave)
 ========================= */
 if (CONFIG.petalsEnabled) {
   const petalsLayer = document.querySelector(".petals");
   if (petalsLayer) {
     const ppm = isMobile ? 8 : CONFIG.petalsPerMinute;
-    const interval = isMobile
-      ? Math.max(900, Math.floor((60_000 / ppm)))
-      : Math.max(220, Math.floor((60_000 / ppm)));
+    const interval = Math.max(400, Math.floor(60_000 / ppm));
 
     setInterval(() => {
       const limit = isMobile ? 10 : 28;
