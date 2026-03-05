@@ -1531,21 +1531,28 @@ body.js .dressPremium.dressIn{
   }
 
 }
-/* ===== GALERÍA MÁS GRANDE EN CELULAR ===== */
+/* ===== GALERÍA FULL ANCHO EN CELULAR ===== */
 
 @media (max-width:768px){
 
-  /* la sección usa más ancho de pantalla */
-  #gallery .container{
-    width: 96vw;
+  /* quitamos el padding lateral de la sección */
+  #gallery.section{
+    padding-left: 6px;
+    padding-right: 6px;
   }
 
-  /* menos espacio entre columnas */
+  /* el container usa todo el ancho */
+  #gallery .container{
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* columnas pegadas */
   .galleryGridClean{
     column-gap: 6px;
   }
 
-  /* menos espacio vertical */
   .gTile{
     margin-bottom: 6px;
   }
