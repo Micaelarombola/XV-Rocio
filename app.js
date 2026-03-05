@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    document.body.classList.remove("isLoading");
+  }, 2300);
+});
 /* =========================
    HELPERS
 ========================= */

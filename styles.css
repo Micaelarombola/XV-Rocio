@@ -58,7 +58,7 @@ body{
   }
 }
 
-/* Loader */
+/* ===== LOADER (SIN JS) ===== */
 .loader{
   position:fixed;
   inset:0;
@@ -68,24 +68,18 @@ body{
   background:rgba(255,255,255,.88);
   backdrop-filter: blur(10px);
   z-index:9999;
+
+  /* Se va SOLO aunque falle el JS */
+  animation: loaderFadeOut .45s ease 2.2s forwards;
 }
-.loaderCard{
-  background:var(--card);
-  border-radius:20px;
-  padding:18px 20px;
-  box-shadow:var(--shadow);
-  display:flex;
-  gap:12px;
-  align-items:center;
+
+@keyframes loaderFadeOut{
+  to{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
 }
-.loaderRing{
-  width:22px;height:22px;
-  border-radius:50%;
-  border:3px solid var(--soft);
-  border-top-color: var(--pink);
-  animation: spin 1s linear infinite;
-}
-@keyframes spin{ to{ transform:rotate(360deg);} }
 
 /* HERO */
 .hero{
@@ -1509,5 +1503,24 @@ html, body{
   }
   #gallery .gTile{
     border-radius: 16px;
+  }
+}
+
+/* BLOQUEAR SCROLL MIENTRAS CARGA */
+body.isLoading{
+  height:100vh;
+  overflow:hidden;
+}
+
+/* LOADER SE OCULTA SOLO */
+.loader{
+  animation: loaderFadeOut .5s ease 2.3s forwards;
+}
+
+@keyframes loaderFadeOut{
+  to{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
   }
 }
