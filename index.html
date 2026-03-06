@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mis 15 - Rocío</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -15,10 +13,7 @@
 
   <link rel="stylesheet" href="styles.css" />
 </head>
-
-<body class="isLoading">  <!-- FX LAYERS -->
-  <canvas id="sparkleCanvas" aria-hidden="true"></canvas>
-  <div class="petals" aria-hidden="true"></div>
+<body>
 
   <!-- Loader -->
   <div id="loader" class="loader">
@@ -29,144 +24,135 @@
   </div>
 
   <!-- HERO -->
-<header class="hero" id="top">
-  <div class="heroOverlay"></div>
+  <header class="hero" id="top">
+    <div class="heroOverlay"></div>
 
-  <div class="heroCard">
+    <div class="heroCard">
+      <div class="heroTitleBlock">
+        <p class="kicker reveal">MIS XV</p>
+        <h1 class="name reveal delay-1">Rocío</h1>
+      </div>
 
-   <div class="heroTitleBlock">
-  <p class="kicker reveal">MIS XV</p>
-  <h1 class="name reveal delay-1">Rocío</h1>
-</div>
+      <p class="heroPhrase reveal delay-2">
+        Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan especial
+      </p>
 
-<p class="heroPhrase reveal delay-2">
-Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan especial</p>
+      <div class="mainPhotoWrap reveal delay-3">
+        <img class="mainPhoto" src="assets/principal.jpeg" alt="Rocío - foto principal" />
+      </div>
 
-    <!-- FOTO PRINCIPAL -->
-    <div class="mainPhotoWrap reveal delay-3">
-      <img class="mainPhoto" src="assets/principal.jpeg" alt="Rocío - foto principal" />
+      <div class="heroActions reveal delay-4">
+        <a class="btn btnPrimary" href="#details">Ver detalles</a>
+        <button class="btn btnGhost" id="musicBtn" aria-pressed="false" type="button">
+          Música: OFF
+        </button>
+      </div>
+
+      <p class="scrollHint reveal delay-4">
+        Deslizá para ver toda la invitación ✨
+      </p>
     </div>
+  </header>
 
-    <!-- BOTONES -->
-    <div class="heroActions reveal delay-4">
-      <a class="btn btnPrimary" href="#details">Ver detalles</a>
-      <button class="btn btnGhost" id="musicBtn" aria-pressed="false">
-        Música: OFF
-      </button>
-    </div>
-
-    <!-- HINT -->
-    <p class="scrollHint reveal delay-4">
-      Deslizá para ver toda la invitación ✨
-    </p>
-
-  </div>
-</header>
-
-  <!-- AUDIO (opcional) -->
-  <audio id="bgMusic" loop>
+  <!-- AUDIO -->
+  <audio id="bgMusic" loop preload="none">
     <source src="assets/music.mp3" type="audio/mpeg">
   </audio>
 
   <main class="content">
 
-    <!-- DATOS DEL EVENTO -->
-  <section class="section revealOnScroll" id="details">
-  <div class="container">
-    <h2 class="h2 center detailsTitle">
-      Detalles del evento
-      <span class="detailsHalo" aria-hidden="true"></span>
-    </h2>
+    <!-- DETALLES -->
+    <section class="section revealOnScroll" id="details">
+      <div class="container">
+        <h2 class="h2 center detailsTitle">
+          Detalles del evento
+          <span class="detailsHalo" aria-hidden="true"></span>
+        </h2>
 
-    <p class="p center muted detailsSub">
-      Guardá la fecha… se viene una noche inolvidable 💗✨
-    </p>
-
-    <div class="grid3">
-      <article class="card glow">
-        <div class="icon">🗓</div>
-        <h3 class="h3">Fecha</h3>
-        <p class="p" id="eventDateText">Sábado 27 de Junio 2026</p>
-      </article>
-
-      <article class="card glow">
-        <div class="icon">⏰</div>
-        <h3 class="h3">Horario</h3>
-        <p class="p">
-          <strong id="eventTimeText">21:00 hs</strong>
-          <span class="muted"> a </span>
-          <strong id="eventEndText">05:00 am</strong>
+        <p class="p center muted detailsSub">
+          Guardá la fecha… se viene una noche inolvidable 💗✨
         </p>
-        <p class="small muted">¡Toda la noche! ✨</p>
-      </article>
 
-      <article class="card glow">
-        <div class="icon">📍</div>
-        <h3 class="h3">Salón</h3>
-        <p class="p">
-          <span id="venueName">Don Quijote</span><br/>
-          <span class="muted" id="venueAddress">San Lorenzo 2482, San Martín, Provincia de Buenos Aires</span>
-        </p>
-      </article>
+        <div class="grid3">
+          <article class="card glow">
+            <div class="icon">🗓</div>
+            <h3 class="h3">Fecha</h3>
+            <p class="p" id="eventDateText">Sábado 27 de Junio 2026</p>
+          </article>
 
-      <article class="card glow cardAction">
-        <div class="icon">📅</div>
-        <h3 class="h3">Agendar</h3>
-        <p class="p muted">Sumalo a tu calendario en 1 toque ✨</p>
+          <article class="card glow">
+            <div class="icon">⏰</div>
+            <h3 class="h3">Horario</h3>
+            <p class="p">
+              <strong id="eventTimeText">21:00 hs</strong>
+              <span class="muted"> a </span>
+              <strong id="eventEndText">05:00 am</strong>
+            </p>
+            <p class="small muted">¡Toda la noche! ✨</p>
+          </article>
 
-        <a class="btn btnPrimary btnInsideCard" target="_blank" rel="noopener"
-          href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV%20de%20Roc%C3%ADo&dates=20260628T000000Z/20260628T080000Z&details=%C2%A1Te%20espero%20en%20mis%20XV!%20%F0%9F%92%97%20%28Invitaci%C3%B3n%20WebMic%29&location=Don%20Quijote%20-%20San%20Lorenzo%202482%2C%20San%20Mart%C3%ADn%2C%20Provincia%20de%20Buenos%20Aires">
-          Agendar en Google
-        </a>
+          <article class="card glow">
+            <div class="icon">📍</div>
+            <h3 class="h3">Salón</h3>
+            <p class="p">
+              <span id="venueName">Don Quijote</span><br />
+              <span class="muted" id="venueAddress">San Lorenzo 2482, San Martín, Provincia de Buenos Aires</span>
+            </p>
+          </article>
 
-        <a class="btn btnGhost btnInsideCard" href="evento-rocio.ics" download>
-          Agendar (iPhone/Outlook)
-        </a>
-      </article>
-    </div>
-  </div>
-</section>
-    
- <!-- OTRAS FOTOS -->
-<section class="section sectionSoft revealOnScroll" id="gallery">
-  <div class="container">
+          <article class="card glow cardAction">
+            <div class="icon">📅</div>
+            <h3 class="h3">Agendar</h3>
+            <p class="p muted">Sumalo a tu calendario en 1 toque ✨</p>
 
-    <h2 class="h2 center photosTitle">
-      <span class="sparkleWord">Fotos</span>
-      <span class="shine" aria-hidden="true"></span>
-    </h2>
+            <a class="btn btnPrimary btnInsideCard" target="_blank" rel="noopener"
+              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV%20de%20Roc%C3%ADo&dates=20260628T000000Z/20260628T080000Z&details=%C2%A1Te%20espero%20en%20mis%20XV!%20%F0%9F%92%97&location=Don%20Quijote%20-%20San%20Lorenzo%202482%2C%20San%20Mart%C3%ADn%2C%20Provincia%20de%20Buenos%20Aires">
+              Agendar en Google
+            </a>
 
-    <div class="galleryGridClean" id="galleryGridClean">
+            <a class="btn btnGhost btnInsideCard" href="evento-rocio.ics" download>
+              Agendar (iPhone/Outlook)
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-      <button class="gTile" type="button">
-        <img src="assets/8.jpeg" alt="Rocío foto 1" loading="lazy">
-      </button>
+    <!-- GALERÍA -->
+    <section class="section sectionSoft revealOnScroll" id="gallery">
+      <div class="galleryContainer">
+        <h2 class="h2 center photosTitle">
+          <span class="sparkleWord">Fotos</span>
+          <span class="shine" aria-hidden="true"></span>
+        </h2>
 
-      <button class="gTile" type="button">
-        <img src="assets/6.jpeg" alt="Rocío foto 2" loading="lazy">
-      </button>
+        <div class="galleryGrid">
+          <button class="gTile" type="button">
+            <img src="assets/8.jpeg" alt="Rocío foto 1" loading="lazy" decoding="async">
+          </button>
 
-      <button class="gTile" type="button">
-        <img src="assets/7.jpeg" alt="Rocío foto 3" loading="lazy">
-      </button>
+          <button class="gTile" type="button">
+            <img src="assets/6.jpeg" alt="Rocío foto 2" loading="lazy" decoding="async">
+          </button>
 
-      <button class="gTile" type="button">
-        <img src="assets/4.jpeg" alt="Rocío foto 4" loading="lazy">
-      </button>
+          <button class="gTile" type="button">
+            <img src="assets/7.jpeg" alt="Rocío foto 3" loading="lazy" decoding="async">
+          </button>
 
-      <button class="gTile" type="button">
-        <img src="assets/5.jpeg" alt="Rocío foto 5" loading="lazy">
-      </button>
+          <button class="gTile" type="button">
+            <img src="assets/4.jpeg" alt="Rocío foto 4" loading="lazy" decoding="async">
+          </button>
 
-      <button class="gTile" type="button">
-        <img src="assets/2.jpeg" alt="Rocío foto 6" loading="lazy">
-      </button>
+          <button class="gTile" type="button">
+            <img src="assets/5.jpeg" alt="Rocío foto 5" loading="lazy" decoding="async">
+          </button>
 
-    </div>
-
-  </div>
-</section>
-
+          <button class="gTile" type="button">
+            <img src="assets/2.jpeg" alt="Rocío foto 6" loading="lazy" decoding="async">
+          </button>
+        </div>
+      </div>
+    </section>
 
     <!-- DRESS CODE -->
     <section class="section revealOnScroll" id="dresscode">
@@ -174,8 +160,6 @@ Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan espe
         <h2 class="h2">Dress Code</h2>
 
         <div class="dressPremium">
-          <div class="dressSparkle" aria-hidden="true"></div>
-
           <div class="dressIcons" aria-hidden="true">
             <div class="dressIconBox">👗</div>
             <div class="dressIconBox">🤵</div>
@@ -187,12 +171,11 @@ Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan espe
             Vení listo para brillar ✨<br />
             Una noche especial merece un look inolvidable.
           </p>
-
-
         </div>
       </div>
     </section>
-    <!-- REGALO (ALIAS COPIABLE) -->
+
+    <!-- REGALO -->
     <section class="section sectionSoft revealOnScroll" id="gift">
       <div class="container narrow center">
         <h2 class="h2">Regalo</h2>
@@ -225,41 +208,41 @@ Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan espe
         </div>
       </div>
     </section>
-    <!-- SPOTIFY -->
-    <!-- MÚSICA (WhatsApp) -->
-<section class="section revealOnScroll" id="musicPick">
-  <div class="container narrow center">
-    <h2 class="h2">Elegí un tema para mi noche 🎶</h2>
 
-    <p class="p muted" style="max-width:600px;margin:10px auto 0;">
-      Ayudame a armar la música de mis 15 💗<br/>
-      Elegí una canción que no puede faltar y mandámela por WhatsApp ✨
-    </p>
+    <!-- MÚSICA -->
+    <section class="section revealOnScroll" id="musicPick">
+      <div class="container narrow center">
+        <h2 class="h2">Elegí un tema para mi noche 🎶</h2>
 
-    <div class="musicPickCard">
-      <label class="field">
-        <span>¿Qué tema querés sumar?</span>
-        <input type="text" id="songName" placeholder="Ej: Tini - Miénteme / Coldplay - Yellow" maxlength="80" />
-      </label>
+        <p class="p muted" style="max-width:600px;margin:10px auto 0;">
+          Ayudame a armar la música de mis 15 💗<br />
+          Elegí una canción que no puede faltar y mandámela por WhatsApp ✨
+        </p>
 
-      <label class="field">
-        <span>Artista (opcional)</span>
-        <input type="text" id="songArtist" placeholder="Ej: Tini / Coldplay" maxlength="60" />
-      </label>
+        <div class="musicPickCard">
+          <label class="field">
+            <span>¿Qué tema querés sumar?</span>
+            <input type="text" id="songName" placeholder="Ej: Tini - Miénteme / Coldplay - Yellow" maxlength="80" />
+          </label>
 
-      <label class="field">
-        <span>Mensaje (opcional)</span>
-        <textarea id="songNote" rows="3" placeholder="Ej: ¡Este tema es para cantar a los gritos! 💗"></textarea>
-      </label>
+          <label class="field">
+            <span>Artista (opcional)</span>
+            <input type="text" id="songArtist" placeholder="Ej: Tini / Coldplay" maxlength="60" />
+          </label>
 
-      <button class="btn btnPrimary formBtn" id="sendSongBtn" type="button">
-        📲 Enviar por WhatsApp
-      </button>
+          <label class="field">
+            <span>Mensaje (opcional)</span>
+            <textarea id="songNote" rows="3" placeholder="Ej: ¡Este tema es para cantar a los gritos! 💗"></textarea>
+          </label>
 
-      <p class="small muted" id="songFeedback" aria-live="polite"></p>
-    </div>
-  </div>
-</section>
+          <button class="btn btnPrimary formBtn" id="sendSongBtn" type="button">
+            📲 Enviar por WhatsApp
+          </button>
+
+          <p class="small muted" id="songFeedback" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
 
     <!-- COUNTDOWN -->
     <section class="section sectionSoft revealOnScroll" id="countdown">
@@ -294,7 +277,7 @@ Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan espe
         <h2 class="h2">Confirmar asistencia</h2>
 
         <p class="p muted rsvpPhrase">
-          Tu presencia hará esta noche aún más especial. ¿Me acompañás?💗
+          Tu presencia hará esta noche aún más especial. ¿Me acompañás? 💗
         </p>
 
         <div class="rsvpBox">
@@ -312,7 +295,7 @@ Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan espe
       <div class="modalBackdrop" id="rsvpBackdrop"></div>
 
       <div class="modalCard" role="dialog" aria-modal="true" aria-labelledby="rsvpTitle">
-        <button class="modalClose" id="closeRsvpBtn" aria-label="Cerrar">✕</button>
+        <button class="modalClose" id="closeRsvpBtn" aria-label="Cerrar" type="button">✕</button>
 
         <div class="modalHeader">
           <div class="modalBadge">💗</div>
@@ -369,7 +352,7 @@ Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan espe
       </div>
     </div>
 
-    <!-- CIERRE LINDO -->
+    <!-- CIERRE -->
     <section class="section sectionSoft revealOnScroll" id="closing">
       <div class="container narrow center">
         <h2 class="h2">Te espero</h2>
@@ -381,33 +364,26 @@ Hoy mi sueño se hace realidad… gracias por ser parte de este momento tan espe
       </div>
     </section>
 
-   <footer class="footerWebmic">
-  <div class="footerContent">
+    <!-- FOOTER -->
+    <footer class="footerWebmic">
+      <div class="footerContent">
+        <p class="madeWith">Hecho con amor 🤍💗</p>
 
-    <p class="madeWith">Hecho con amor 🤍💗</p>
+        <div class="webmicBrand">
+          <span class="wmName">WebMic Studio</span>
+        </div>
 
-    <div class="webmicBrand">
-      <span class="wmName">WebMic Studio</span>
-    </div>
-
-    <div class="webmicContact">
-      <a href="https://wa.me/5491127887082?text=Hola%20WebMic%20✨%20Vi%20la%20invitación%20de%20Rocío%20y%20quiero%20información%20para%20la%20mía%20💗" 
-   target="_blank">
-   WhatsApp
-</a>
-      <span class="dotSeparator">•</span>
-
-      <a href="https://www.instagram.com/webmic/" target="_blank">
-        Instagram
-      </a>
-    </div>
-
-  </div>
-</footer>
+        <div class="webmicContact">
+          <a href="https://wa.me/5491127887082?text=Hola%20WebMic%20✨%20Vi%20la%20invitación%20de%20Rocío%20y%20quiero%20información%20para%20la%20mía%20💗"
+             target="_blank" rel="noopener">WhatsApp</a>
+          <span class="dotSeparator">•</span>
+          <a href="https://www.instagram.com/webmic/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </footer>
 
   </main>
 
   <script src="app.js"></script>
 </body>
-
 </html>
