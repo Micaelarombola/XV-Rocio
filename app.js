@@ -51,11 +51,11 @@ musicBtn?.addEventListener("click", async () => {
 
     if (bgMusic.paused) {
       await bgMusic.play();
-      musicBtn.textContent = "Música: ON";
+      musicBtn.innerHTML = "<span>PAUSA</span> 🎵";
       musicBtn.setAttribute("aria-pressed", "true");
     } else {
       bgMusic.pause();
-      musicBtn.textContent = "Música: OFF";
+      musicBtn.innerHTML = "<span>DALE<br>PLAY</span> 🎵";
       musicBtn.setAttribute("aria-pressed", "false");
     }
   } catch {
